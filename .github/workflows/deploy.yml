@@ -17,6 +17,9 @@ jobs:
     - name: Install docker
       uses: docker/setup-buildx-action@v3
 
+    - name : generate django secret key
+      run: echo "${{ secrets.DJANGO_PROJECT_KEY }}" > django_project_key.json
+
     - name: Build the Docker image
       run: docker build . -t oksusu2020/django_project:$(date +%Y%m%d)
 
