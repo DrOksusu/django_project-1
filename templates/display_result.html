@@ -1,0 +1,76 @@
+
+{% extends "base.html" %}
+{% block title %}HOME{% endblock %}
+{% load static %}<!-- setting.py에서 설정한 정적파일 경로를 사용하기 위해 추가 -->
+{% block content %}
+
+<h2>Total Amount Received by Date</h2>
+<canvas id="amountChart" width="800" height="400"></canvas>
+
+<!-- 날짜별 총 수령 금액을 보여주는 테이블 -->
+<h3>Daily Totals Table</h3>
+<div class="my-class">
+    <table class="table table-striped table-dark">
+        <tr>
+            <th>날짜</th>
+            <th>총수납금액</th>
+        </tr>
+        {% for date, amount in date_amount_pairs %}
+        <tr>
+
+            <td>{{ date }}</td>
+            <td>{{ amount }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+{% endblock %}
+
+{% block script %}
+
+<!-- JavaScript를 맨 아래로 이동하여 최적의 로딩 성능을 구현 -->
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Django에서 전달받은 데이터를 JavaScript 변수로 할당
+        const dates = JSON.parse('{{ dates|safe }}');
+        const totalAmounts = JSON.parse('{{ total_amounts|safe }}');
+        console.log(dates);
+        console.log(totalAmounts);
+
+        // Chart.js 그래프 설정
+        const ctx = document.getElementById('amountChart').getContext('2d');
+        const amountChart = new Chart(ctx, {
+            type: 'bar',  // 선 그래프
+            data: {
+                labels: dates,  // X축에 날짜 표시
+                datasets: [{
+                    label: 'Total Amount Received',
+                    data: totalAmounts,  // Y축에 금액 표시
+                    borderColor: 'blue',  // 선 색상
+                    backgroundColor: 'rgba(0, 0, 255, 0.1)',  // 투명한 파란색 배경
+                    fill: true,  // 그래프 하단을 채우기
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    x: {
+                        title: {
+                            display: true,
+                            text: 'Date'
+                        }
+                    },
+                    y: {
+                        title: {
+                            display: true,
+                            text: 'Total Amount Received'
+                        },
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    });
+</script>
+{% endblock %}
+

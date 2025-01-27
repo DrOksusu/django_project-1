@@ -1,0 +1,21 @@
+
+<!-- 이 문서는 /upload 경로로 접근하면 보여줄 페이지 -->
+{% extends "base.html" %}
+{% block title %}HOME{% endblock %}
+{% block content %}
+  <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div>
+      <label for="file">파일:</label>
+      <input type="file" id="file" name="file" required/>
+    </div>
+    
+    <div>
+      <label for="description">설명:</label>
+      <input type="text" id="description" name="Description" />
+    </div>
+    <div>
+      <input type="submit" value="업로드">
+    </div>
+  </form>
+{% endblock %}

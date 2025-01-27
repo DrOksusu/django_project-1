@@ -1,0 +1,28 @@
+
+{% extends "base.html" %}
+{% block title %}HOME{% endblock %}
+{% load static %}<!-- setting.py에서 설정한 정적파일 경로를 사용하기 위해 추가 -->
+{% block content %}
+  <h1>HOME</h1>
+  <div>
+    <img src="{% static 'image/oksusu.jpg' %}" alt="Logo" class="index-img" >    
+  </div>
+  {% if request.session.user_email %} 
+
+  {% comment %} 로그인이 됨 {% endcomment %}
+  <h2>{{ request.session.user_email }}님 환영합니다.</h2>
+  <a href="{% url 'upload' %}" class="btn btn-primary">파일업로드</a> 
+  <a href="{% url 'result' %}" class="btn btn-primary">당월총수납액조회</a>
+ 
+  {% comment %} 로그인이 안 됨 {% endcomment %}
+  <a href="{% url 'logout' %}" class="btn btn-primary">로그아웃</a>
+  {% else %}
+  {% comment %} 로그인이 안 됨 {% endcomment %}
+  <a class="btn btn-primary" href="{% url 'register' %}">회원가입 페이지</a>
+  <a class="btn btn-primary" href="{% url 'login' %}">로그인 페이지</a>
+  <button class="btn btn-primary" type="submit">Button</button>
+  <input class="btn btn-primary" type="button" value="Input">
+  <input class="btn btn-primary" type="submit" value="Submit">
+  <input class="btn btn-primary" type="reset" value="Reset">
+  {% endif %}
+{% endblock %}

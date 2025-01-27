@@ -1,0 +1,23 @@
+/* Google Fonts에서 Noto Sans KR 폰트 불러오기 */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap');
+
+/* 기본 스타일 - PC 화면에서 사용될 폰트 크기 */
+.my-class {
+    width: 100%;
+    margin-top: 20px;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 18px; /* PC에서 기본 폰트 크기 */
+}
+
+/* 모바일 화면 (768px 이하)에서 폰트 크기 조정 */
+@media (max-width: 768px) {
+    .my-class {
+        font-size: 14px; /* 모바일에서 작은 폰트 크기 */
+    }
+}
+
+.index-img {
+    width: 50%;
+    display: block;       /* 이미지 요소를 블록 요소로 설정 */
+    margin: 0 auto;       /* 좌우 마진을 자동으로 설정하여 가운데 정렬 */
+}

@@ -1,0 +1,49 @@
+# Python 관련
+*.pyc
+*.pyo
+*.pyd
+__pycache__/
+*.so
+
+# 민감한 파일
+django_project_key.json
+
+# 엑셀 관련
+*.xls
+*.xlsx
+
+# 환경 설정
+.env
+*.env
+
+# 가상 환경
+venv/
+env/
+ENV/
+.venv/
+.ENV/
+
+# Django 관련
+db.sqlite3
+*.sqlite3
+/media/
+staticfiles/
+.DS_Store
+
+# IDE 및 편집기 관련
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# 운영체제 관련
+Thumbs.db
+.DS_Store
+
+# 로그 파일
+*.log
+
+# 기타
+*.bak
+*.swp
+*.tmp

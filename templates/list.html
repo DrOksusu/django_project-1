@@ -1,0 +1,24 @@
+
+{% extends "base.html" %}
+{% block title %}HOME{% endblock %}
+{% load static %}<!-- setting.py에서 설정한 정적파일 경로를 사용하기 위해 추가 -->
+{% block content %}
+  <h1>업로드엑셀목록</h1>
+  <table>
+    <tr>
+      <th>id</th>
+      <th>진료일</th>
+      <th>차트번호</th>
+      
+    </tr>
+    {% for ms in medical_statistics %}
+    <tr>
+      <td>{{ ms.id }}</td>
+      <td>{{ ms.treatment_date }}</td>
+      <td>{{ ms.chart_number }}</td>
+    </tr>
+    {% endfor %}
+  </table>
+  
+  
+{% endblock %}

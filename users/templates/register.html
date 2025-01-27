@@ -1,0 +1,33 @@
+{% extends "base.html" %} <!-- base.html을 상속받아 사용 -->
+<!-- 이런식으로 매번 나오는 부분을 레이아웃 파일이라고 부른다 -->
+{% block title %}여기가 변하는 제목부분{% endblock  %}
+
+{% block content %}
+  <h1>회원가입 페이지</h1>
+  <div>
+
+    <form action="{% url 'save_user' %}" method="post">
+      {% csrf_token %}
+      <div>
+        <label for="email_id">이메일:</label>
+        <input class="form-control" type="email" id="email_id" name="UserEmail" placeholder="이메일 아이디를 입력하세요" required/>
+        <!-- form-control 클래스는 부트스트랩에서 제공하는 클래스로, 폼 요소에 스타일을 적용할 때 사용하고 이것은 반응형으로 브라우져 크기에 따라 자동으로 바뀐다 -->
+      </div>
+      <div>
+        <label class="form-label" for="password">비밀번호:</label>
+        <input class="form-control" type="password" id="password" name="Password" placeholder="비밀번호를 입력하세요" required/>
+      </div>
+      <div>
+        <label class="form-label" for="pass_confirm">비밀번호 확인:</label>
+        <input class="form-control" type="password" id="pass_confirm" name="PasswordConfirm" placeholder="비밀번호를 확인하세요" required/>
+      </div>
+      <div>
+        <input class="btn btn-success" type="submit" value="회원가입">
+      </div>
+      
+    </form>
+  </div>  
+
+  <a class="btn btn-primary" href="{% url 'index' %}">HOME</a>
+
+{% endblock %}

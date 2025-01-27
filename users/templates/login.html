@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block title %}로그인{% endblock %}
+  {% block content %}
+  <h1>로그인 페이지</h1>
+  <div>
+
+    <form action="{% url 'login_process' %}" method="post">
+      {% csrf_token %}
+      <div>
+        <label for="email_id">이메일:</label>
+        <input type="email" id="email_id" name="UserEmail" placeholder="이메일 아이디를 입력하세요" required/>
+      </div>
+      <div>
+        <label for="password">비밀번호:</label>
+        <input type="password" id="password" name="Password" placeholder="비밀번호를 입력하세요" required/>
+      </div>
+      
+      <div>
+        <input type="submit" value="로그인">
+      </div>
+      
+    </form>
+  </div>
+
+  <a href="{% url 'index' %}">HOME</a>
+  <a href="{% url 'register' %}">회원가입 페이지</a>
+  
+  {% endblock  %}
+
+  
