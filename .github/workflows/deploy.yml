@@ -18,7 +18,7 @@ jobs:
       uses: docker/setup-buildx-action@v3
 
     - name: Generate django secret key
-      run:
+      run: |
         echo "DEBUG: ${{ secrets.DJANGO_PROJECT_KEY }}"
         echo "${{ secrets.DJANGO_PROJECT_KEY }}" > django_project_key.json
         cat django_project_key.json
