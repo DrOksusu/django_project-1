@@ -49,6 +49,10 @@ jobs:
         ssh -o StrictHostKeyChecking=no -i aws_key.pem ubuntu@${{secrets.AWS_HOST_IP}} << EOF
           echo "AWS login"
           sudo docker pull oksusu2020/django_project:$(date +%Y%m%d)
+          docker stop django_container || true
+          docker rm django_container || true
+          docker run -d --name django_container -p 8000:8000 oksusu2020/django_project:$(date +%Y%m%d)
+          exit
         EOF
     
 
