@@ -37,8 +37,8 @@ jobs:
       run : |
         echo "${{ secrets.AWS_KEY}}" > aws_key.pem
         chmod 400 aws_key.pem        
-        #ssh -i aws_key.pem ubuntu@3.38.101.16
-        ssh -o StrictHostKeyChecking=no -i aws_key.pem ubuntu@3.38.101.16
+        ssh -i aws_key.pem ubuntu@3.38.101.16
+        #ssh -o StrictHostKeyChecking=no -i aws_key.pem ubuntu@3.38.101.16
 
 
     
