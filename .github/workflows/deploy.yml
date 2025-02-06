@@ -33,6 +33,14 @@ jobs:
     - name: Push the Docker image
       run: docker push oksusu2020/django_project:$(date +%Y%m%d)
 
+    - name: AWS login
+      run : |
+        echo "${{ secrets.AWS_KEY}}" > aws_key.pem
+        chmod 400 aws_key.pem        
+        ssh -i aws_key.pem
+        ssh -o StrictHostKeyChecking=no -i aws_key.pem ubuntu@3.38.101.16
+
+
     
 
     
