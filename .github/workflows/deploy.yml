@@ -46,12 +46,12 @@ jobs:
 
         # # LightSail 서버의 호스트 키 추가
         # ssh-keyscan -H 3.38.101.116 >> ~/.ssh/known_hosts
-        ssh -o StrictHostKeyChecking=no -i aws_key.pem ubuntu@${{secrets.AWS_HOST_IP}}
-
-    - name: Pull the Docker image
-      run: docker pull oksusu2020/django_project:$(date +%Y%m%d)
-
-
+        ssh -o StrictHostKeyChecking=no -i aws_key.pem ubuntu@${{secrets.AWS_HOST_IP}} << EOF
+          echo "AWS login"
+          sudo docker pull oksusu2020/django_project:$(date +%Y%m%d)
+        EOF
     
+
+  
 
     
