@@ -38,15 +38,18 @@ jobs:
         echo "${{ secrets.AWS_KEY}}" > aws_key.pem
         chmod 400 aws_key.pem        
         #ssh -i aws_key.pem ubuntu@${{secrets.AWS_HOST_IP}}
-       
+        # 43~48 을 쓴다면 40번째 줄로만 해도 접속할 수 있다.
         
         # SSH 디렉토리 생성 및 권한 설정
         # mkdir -p ~/.ssh
         # chmod 700 ~/.ssh
 
         # # LightSail 서버의 호스트 키 추가
-        # ssh-keyscan -H 3.38.101.16 >> ~/.ssh/known_hosts
+        # ssh-keyscan -H 3.38.101.116 >> ~/.ssh/known_hosts
         ssh -o StrictHostKeyChecking=no -i aws_key.pem ubuntu@${{secrets.AWS_HOST_IP}}
+
+    - name: Pull the Docker image
+      run: docker pull oksusu2020/django_project:$(date +%Y%m%d)
 
 
     
