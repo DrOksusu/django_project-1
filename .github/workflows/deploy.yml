@@ -44,7 +44,7 @@ jobs:
           sudo docker pull oksusu2020/django_project:$(date +%Y%m%d)
           sudo docker stop django_container || true
           sudo docker rm django_container || true
-          sudo docker run -d --name django_container -p 8000:8000 oksusu2020/django_project:$(date +%Y%m%d)
+          sudo docker run -d --name django_container -p 8080:8080 oksusu2020/django_project:$(date +%Y%m%d)
           exit
         EOF
 
