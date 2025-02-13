@@ -2,8 +2,8 @@
 FROM python:3.11-slim
 
 # 환경 변수 설정
-ENV PYTHONDONTWRITEBYTECODE 1
-ENV PYTHONUNBUFFERED 1
+ENV PYTHONDONTWRITEBYTECODE = 1
+ENV PYTHONUNBUFFERED = 1
 
 
 # 작업 디렉토리 설정
@@ -33,12 +33,12 @@ COPY nginx.conf /etc/nginx/conf.d/default.conf
 
 
 # sql proxy 설치
-RUN curl -o cloud-sql-proxy https://storage.googleapis.com/cloud-sql-connectors/cloud-sql-proxy/v2.13.0/cloud-sql-proxy.linux.amd64 && \
-    chmod +x cloud-sql-proxy
+# RUN curl -o cloud-sql-proxy https://storage.googleapis.com/cloud-sql-connectors/cloud-sql-proxy/v2.13.0/cloud-sql-proxy.linux.amd64 && \
+#     chmod +x cloud-sql-proxy
 
 # 애플리케이션 소스 복사
 COPY . /app/
-COPY django_project_key.json /app/credentials.json
+# COPY django_project_key.json /app/credentials.json
 
 
 RUN python manage.py collectstatic --noinput  
@@ -49,8 +49,11 @@ EXPOSE 8080
 # Django 서버 실행
 # CMD ["python", "manage.py", "runserver", "0.0.0.0:8080"]
 # Run Cloud SQL Proxy
-CMD ./cloud-sql-proxy --credentials-file credentials.json --address 0.0.0.0 --port 3306 my-project2-441007:us-central1:oksusu-database & \
-gunicorn mydocker.wsgi:application --bind 127.0.0.1:8000 & \
+# CMD ./cloud-sql-proxy --credentials-file credentials.json --address 0.0.0.0 --port 3306 my-project2-441007:us-central1:oksusu-database & \
+# gunicorn mydocker.wsgi:application --bind 127.0.0.1:8000 & \
+# nginx -g "daemon off;"
+
+CMD gunicorn mydocker.wsgi:application --bind 127.0.0.1:8000 & \
 nginx -g "daemon off;"
 
 

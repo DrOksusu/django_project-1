@@ -31,7 +31,7 @@ DEBUG = True
 ALLOWED_HOSTS = ["localhost", "127.0.0.1", "0.0.0.0", "192.168.0.12", "192.168.0.13", "3.38.101.116"]
 
 # 신뢰할 수 있는 출처 설정
-CSRF_TRUSTED_ORIGINS = ['http://3.38.101.116:8080','localhost:8080','127.0.0.1:8080']
+CSRF_TRUSTED_ORIGINS = ['http://3.38.101.116:8080','http://localhost:8080','http://127.0.0.1:8080']
 
 # Application definition
 
@@ -82,11 +82,11 @@ WSGI_APPLICATION = 'mydocker.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'docker_project',
-        'USER': 'admin',
-        'PASSWORD': 'admin',
-        'HOST': '127.0.0.1',
-        'PORT': os.environ.get('DB_PORT', '3306'), # 환경변수로부터 DB_PORT를 가져오는데(현재는 3308 로 환경변수 셋팅) 없으면 3306을 사용
+        'NAME': 'django_test',
+        'USER': 'naturem',
+        'PASSWORD': 'ok2020',
+        'HOST': '54.180.188.8',
+        'PORT': '3306',#os.environ.get('DB_PORT', '3306'), # 환경변수로부터 DB_PORT를 가져오는데(현재는 3308 로 환경변수 셋팅) 없으면 3306을 사용
     }
 }
 # DATABASES 의 port 는 리스닝이 아니고 연결할 포트를 의미한다.
