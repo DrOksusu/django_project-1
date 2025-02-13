@@ -28,7 +28,8 @@ SECRET_KEY = 'django-insecure-)w&i+$@6z7@3a1)#m3ogzp07h2j&d+^@=spee2^)i&6ufkq&tk
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["localhost", "127.0.0.1", "0.0.0.0", "192.168.0.12", "192.168.0.13", "3.38.101.116"]
+#ALLOWED_HOSTS = ["localhost", "127.0.0.1", "0.0.0.0", "192.168.0.12", "192.168.0.13", "3.38.101.116"]
+ALLOWED_HOSTS = ["*"]
 
 # 신뢰할 수 있는 출처 설정
 CSRF_TRUSTED_ORIGINS = ['http://3.38.101.116:8080','http://localhost:8080','http://127.0.0.1:8080']
